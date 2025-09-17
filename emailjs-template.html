@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nouvelle demande de rendez-vous - Génie Phone</title>
+    <style>
+        body {
+            font-family: 'Inter', Arial, sans-serif;
+            line-height: 1.6;
+            color: #ffffff;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #000000;
+        }
+        .email-container {
+            background-color: #111111;
+            border-radius: 15px;
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            border: 1px solid #333333;
+        }
+        .header {
+            background: linear-gradient(135deg, #4a9eff 0%, #0066cc 100%);
+            color: #ffffff;
+            padding: 30px 20px;
+            text-align: center;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .header p {
+            margin: 10px 0 0 0;
+            opacity: 0.9;
+        }
+        .content {
+            padding: 30px 20px;
+            background-color: #111111;
+        }
+        .info-section {
+            margin-bottom: 25px;
+        }
+        .info-section h2 {
+            color: #4a9eff;
+            font-size: 18px;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #4a9eff;
+            padding-bottom: 5px;
+        }
+        .info-row {
+            display: flex;
+            margin-bottom: 12px;
+            align-items: flex-start;
+        }
+        .info-label {
+            font-weight: bold;
+            min-width: 120px;
+            color: #cccccc;
+        }
+        .info-value {
+            flex: 1;
+            color: #ffffff;
+        }
+        .problem-description {
+            background-color: #1a1a1a;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #4a9eff;
+            margin-top: 10px;
+            border: 1px solid #333333;
+        }
+        .appointment-details {
+            background-color: #1a1a1a;
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid #333333;
+        }
+        .appointment-details h3 {
+            color: #4a9eff;
+            margin-top: 0;
+        }
+        .footer {
+            background-color: #000000;
+            padding: 20px;
+            text-align: center;
+            border-top: 1px solid #333333;
+        }
+        .footer p {
+            margin: 5px 0;
+            color: #cccccc;
+            font-size: 14px;
+        }
+        .urgent {
+            background-color: #1a1a1a;
+            border: 1px solid #4a9eff;
+            color: #4a9eff;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+        }
+        .urgent strong {
+            color: #ffffff;
+        }
+        .contact-info {
+            background-color: #1a1a1a;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+            border: 1px solid #333333;
+        }
+        .contact-info h4 {
+            color: #4a9eff;
+            margin-top: 0;
+        }
+        .contact-info p {
+            color: #cccccc;
+        }
+        .contact-info strong {
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+    <div class="email-container">
+        <!-- En-tête -->
+        <div class="header">
+            <h1>📱 Nouvelle demande de rendez-vous</h1>
+            <p>Génie Phone - Atelier de réparation</p>
+        </div>
+
+        <!-- Contenu principal -->
+        <div class="content">
+            <p><strong>Bonjour,</strong></p>
+            <p>Vous avez reçu une nouvelle demande de rendez-vous via votre site web.</p>
+
+            <!-- Informations client -->
+            <div class="info-section">
+                <h2>👤 Informations du client</h2>
+                <div class="info-row">
+                    <span class="info-label">Nom :</span>
+                    <span class="info-value">{{from_name}}</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Email :</span>
+                    <span class="info-value">{{from_email}}</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Téléphone :</span>
+                    <span class="info-value">{{phone}}</span>
+                </div>
+            </div>
+
+            <!-- Détails de l'appareil -->
+            <div class="info-section">
+                <h2>📱 Détails de l'appareil</h2>
+                <div class="info-row">
+                    <span class="info-label">Type :</span>
+                    <span class="info-value">{{device}}</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Problème :</span>
+                    <div class="info-value">
+                        <div class="problem-description">
+                            {{problem}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Détails du rendez-vous -->
+            <div class="appointment-details">
+                <h3>📅 Détails du rendez-vous souhaité</h3>
+                <div class="info-row">
+                    <span class="info-label">Date :</span>
+                    <span class="info-value">{{date}}</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Heure :</span>
+                    <span class="info-value">{{time}}</span>
+                </div>
+            </div>
+
+            <!-- Actions recommandées -->
+            <div class="urgent">
+                <strong>⚡ Actions à effectuer :</strong>
+                <ul style="margin: 10px 0;">
+                    <li>Contacter le client pour confirmer le rendez-vous</li>
+                    <li>Vérifier la disponibilité de la pièce si nécessaire</li>
+                    <li>Préparer un devis si demandé</li>
+                </ul>
+            </div>
+
+            <!-- Informations de contact -->
+            <div class="contact-info">
+                <h4>📞 Contact rapide</h4>
+                <p><strong>Téléphone :</strong> {{phone}}</p>
+                <p><strong>Email :</strong> {{from_email}}</p>
+                <p><strong>Répondre directement :</strong> Cliquez sur "Répondre" pour contacter directement le client</p>
+            </div>
+        </div>
+
+        <!-- Pied de page -->
+        <div class="footer">
+            <p><strong>Génie Phone</strong> - Atelier de réparation de téléphones</p>
+            <p>📍 04ter rue Jean Jaurès, Anzin 59410</p>
+            <p>📞 07 83 24 09 17 | ✉️ geniephone2025@gmail.com</p>
+            <p>🕒 Lun-Ven: 9h-19h | Sam: 9h-17h</p>
+            <p style="font-size: 12px; color: #999; margin-top: 15px;">
+                Email généré automatiquement depuis votre site web
+            </p>
+        </div>
+    </div>
+</body>
+</html>

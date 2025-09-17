@@ -1,0 +1,45 @@
+===============================================
+📱 NOUVELLE DEMANDE DE RENDEZ-VOUS - GÉNIE PHONE
+===============================================
+
+Bonjour,
+
+Vous avez reçu une nouvelle demande de rendez-vous via votre site web.
+
+👤 INFORMATIONS DU CLIENT
+-------------------------
+Nom : {{from_name}}
+Email : {{from_email}}
+Téléphone : {{phone}}
+
+📱 DÉTAILS DE L'APPAREIL
+------------------------
+Type d'appareil : {{device}}
+Problème rencontré :
+{{problem}}
+
+📅 DÉTAILS DU RENDEZ-VOUS SOUHAITÉ
+----------------------------------
+Date souhaitée : {{date}}
+Heure souhaitée : {{time}}
+
+⚡ ACTIONS À EFFECTUER
+----------------------
+- Contacter le client pour confirmer le rendez-vous
+- Vérifier la disponibilité de la pièce si nécessaire
+- Préparer un devis si demandé
+
+📞 CONTACT RAPIDE
+-----------------
+Téléphone : {{phone}}
+Email : {{from_email}}
+(Répondre directement à cet email pour contacter le client)
+
+===============================================
+GÉNIE PHONE - ATELIER DE RÉPARATION
+📍 04ter rue Jean Jaurès, Anzin 59410
+📞 07 83 24 09 17 | ✉️ geniephone2025@gmail.com
+🕒 Lun-Ven: 9h-19h | Sam: 9h-17h
+===============================================
+
+Email généré automatiquement depuis votre site web

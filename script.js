@@ -58,7 +58,12 @@ document.querySelectorAll('[data-aos]').forEach(el => {
     observer.observe(el);
 });
 
-// Gestion du formulaire de rendez-vous
+// Configuration EmailJS
+(function() {
+    emailjs.init("K8CEDm-343xUK7mH1");
+})();
+
+// Gestion du formulaire de rendez-vous avec EmailJS
 const appointmentForm = document.getElementById('appointment-form');
 
 appointmentForm.addEventListener('submit', function(e) {
@@ -74,14 +79,44 @@ appointmentForm.addEventListener('submit', function(e) {
         return;
     }
     
-    // Simulation d'envoi (remplacer par vraie logique)
-    console.log('Données du formulaire:', data);
+    // Désactiver le bouton d'envoi pour éviter les envois multiples
+    const submitBtn = this.querySelector('button[type="submit"]');
+    const originalText = submitBtn.textContent;
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Envoi en cours...';
     
-    // Message de confirmation
-    alert('Votre demande de rendez-vous a été envoyée avec succès ! Nous vous contacterons bientôt.');
+    // Préparer les paramètres pour EmailJS
+    const templateParams = {
+        from_name: data.name,
+        from_email: data.email,
+        phone: data.phone,
+        device: data.device,
+        problem: data.problem,
+        date: data.date,
+        time: data.time,
+        to_email: 'geniephone2025@gmail.com'
+    };
     
-    // Réinitialiser le formulaire
-    this.reset();
+    // Envoyer l'email via EmailJS
+    emailjs.send('service_yto6438', 'template_lz4j5aa', templateParams)
+        .then(function(response) {
+            console.log('Email envoyé avec succès!', response.status, response.text);
+            
+            // Message de confirmation
+            alert('Votre demande de rendez-vous a été envoyée avec succès ! Nous vous contacterons bientôt.');
+            
+            // Réinitialiser le formulaire
+            appointmentForm.reset();
+        })
+        .catch(function(error) {
+            console.error('Erreur lors de l\'envoi de l\'email:', error);
+            alert('Une erreur est survenue lors de l\'envoi de votre demande. Veuillez réessayer ou nous contacter directement au 07 83 24 09 17.');
+        })
+        .finally(function() {
+            // Réactiver le bouton d'envoi
+            submitBtn.disabled = false;
+            submitBtn.textContent = originalText;
+        });
 });
 
 // Animation du scroll indicator
@@ -182,3 +217,58 @@ const lazyObserver = new IntersectionObserver((entries) => {
 lazyElements.forEach(el => {
     lazyObserver.observe(el);
 });
+
+// Gestion de la modal CGV
+const cgvLink = document.getElementById('cgv-link');
+const cgvModal = document.getElementById('cgv-modal');
+const closeBtn = document.querySelector('.close');
+
+// Ouvrir la modal CGV
+if (cgvLink) {
+    cgvLink.addEventListener('click', function(e) {
+        e.preventDefault();
+        cgvModal.classList.add('show');
+        document.body.style.overflow = 'hidden'; // Empêcher le scroll de la page
+    });
+}
+
+// Fermer la modal CGV
+if (closeBtn) {
+    closeBtn.addEventListener('click', function() {
+        cgvModal.classList.remove('show');
+        document.body.style.overflow = 'auto'; // Rétablir le scroll de la page
+    });
+}
+
+// Fermer la modal en cliquant à l'extérieur
+if (cgvModal) {
+    cgvModal.addEventListener('click', function(e) {
+        if (e.target === cgvModal) {
+            cgvModal.classList.remove('show');
+            document.body.style.overflow = 'auto';
+        }
+    });
+}
+
+// Fermer la modal avec la touche Escape
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && cgvModal.classList.contains('show')) {
+        cgvModal.classList.remove('show');
+        document.body.style.overflow = 'auto';
+    }
+});
+
+// Animation d'ouverture de la modal
+if (cgvModal) {
+    cgvModal.addEventListener('transitionend', function() {
+        if (cgvModal.classList.contains('show')) {
+            // Focus sur le premier élément focusable pour l'accessibilité
+            const firstFocusable = cgvModal.querySelector('h2, .close');
+            if (firstFocusable) {
+                firstFocusable.focus();
+            }
+        }
+    });
+}
+
+
