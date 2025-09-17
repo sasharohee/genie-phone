@@ -1275,22 +1275,34 @@ section {
     }
 
     .advantages-timeline::before {
-        left: 30px;
+        left: 20px;
+        width: 3px;
+    }
+
+    .advantages-timeline::after {
+        left: 20px;
+        width: 3px;
     }
 
     .advantage-item {
         flex-direction: column !important;
-        margin-bottom: 3rem;
-        padding-left: 60px;
+        margin-bottom: 2.5rem;
+        padding-left: 50px;
+        position: relative;
     }
 
     .advantage-item::before {
-        left: 30px;
+        left: 20px;
+        width: 12px;
+        height: 12px;
+        top: 30px;
     }
 
     .advantage-content {
         max-width: 100%;
-        margin-bottom: 1rem;
+        margin-bottom: 1.5rem;
+        padding: 1.5rem;
+        border-radius: 15px;
     }
 
     .advantage-content::before {
@@ -1299,12 +1311,29 @@ section {
 
     .advantage-visual {
         max-width: 100%;
+        order: -1;
+        margin-bottom: 1rem;
     }
 
     .visual-icon {
-        width: 80px;
-        height: 80px;
+        width: 70px;
+        height: 70px;
+        font-size: 1.8rem;
+    }
+
+    .advantage-number {
         font-size: 2rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .advantage-text h3 {
+        font-size: 1.3rem;
+        margin-bottom: 0.75rem;
+    }
+
+    .advantage-text p {
+        font-size: 0.95rem;
+        line-height: 1.5;
     }
 
     .about-content {
@@ -1359,6 +1388,52 @@ section {
     .hero-buttons {
         flex-direction: column;
         align-items: center;
+    }
+
+    /* Améliorations spécifiques pour la section pourquoi nous sur très petits écrans */
+    .advantages-timeline::before {
+        left: 15px;
+        width: 2px;
+    }
+
+    .advantages-timeline::after {
+        left: 15px;
+        width: 2px;
+    }
+
+    .advantage-item {
+        padding-left: 40px;
+        margin-bottom: 2rem;
+    }
+
+    .advantage-item::before {
+        left: 15px;
+        width: 10px;
+        height: 10px;
+        top: 25px;
+    }
+
+    .advantage-content {
+        padding: 1rem;
+        border-radius: 12px;
+    }
+
+    .visual-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 1.5rem;
+    }
+
+    .advantage-number {
+        font-size: 1.8rem;
+    }
+
+    .advantage-text h3 {
+        font-size: 1.2rem;
+    }
+
+    .advantage-text p {
+        font-size: 0.9rem;
     }
 }
 
